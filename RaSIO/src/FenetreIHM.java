@@ -21,7 +21,27 @@ public class FenetreIHM extends JFrame implements ActionListener {
 	
 	public FenetreIHM() {
 		System.setProperty( "file.encoding", "UTF-8" );
-        monPanel = new JPanel () ;
+
+	    monPanel = new JPanel();
+	    monPanel.setLayout(new GridBagLayout()); 
+	    
+	    // Crée un objet de contraintes
+        GridBagConstraints c = new GridBagConstraints(); 
+        
+        // Spécifie le padding externe de tous les composants
+        c.insets = new Insets(1, 1, 1, 1); 
+        
+        // colonne 0
+        c.gridx = 0; 
+  
+        // ligne 0
+        c.gridy = 0; 
+  
+        // augmente la largeur des composants de 10 pixels
+        c.ipadx = 100; 
+  
+        // augmente la hauteur des composants de 50 pixels
+        c.ipady = 100; 
         
         this.setTitle("RaSIO");
         this.setLocationRelativeTo(null);
@@ -29,10 +49,10 @@ public class FenetreIHM extends JFrame implements ActionListener {
         this.setSize(700, 370);
 
         this.jtfUser = new JTextField("");
-		this.jtfUser.setPreferredSize(new Dimension(250,30));
+		this.jtfUser.setPreferredSize(new Dimension(120,25));
 
         this.jpfMdp = new JPasswordField("");
-		this.jpfMdp.setPreferredSize(new Dimension(250,30));
+		this.jpfMdp.setPreferredSize(new Dimension(120,25));
 
         this.lblUser = new JLabel("Pseudo : ");
         this.lblMdp = new JLabel("Mot de passe :");
@@ -48,6 +68,7 @@ public class FenetreIHM extends JFrame implements ActionListener {
         jbValider.addActionListener(this);
         monPanel.add(jbValider);
         
+        
         this.setAlwaysOnTop(true);
         this.getContentPane().add(monPanel);
         this.setVisible(true);
@@ -59,9 +80,8 @@ public class FenetreIHM extends JFrame implements ActionListener {
 			String pseudo = jtfUser.getText();
 			String mdp = jpfMdp.getText();
 			JLabel lblRep = new JLabel("Identifiant incorrect.");
-			Modele unModele = new Modele();
-			if(unModele.selectConnexion(pseudo, mdp)) {
-				lblRep = new JLabel("Vous êtes connecté.");
+			if(Modele.selectConnexion(pseudo, mdp)) {
+				lblRep = new JLabel("Vous etes connecte.");
 			}
 			monPanel.add(lblRep);
 			monPanel.revalidate();

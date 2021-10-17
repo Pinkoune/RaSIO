@@ -3,18 +3,18 @@ import java.util.ArrayList;
 
 public class Modele {
 	//Attributs
-	private Connection connexion;
-	private Statement st;
-	private ResultSet rs;
-	private int count;
-	private PreparedStatement ps;
+	private static Connection connexion;
+	private static Statement st;
+	private static ResultSet rs;
+	private static int count;
+	private static PreparedStatement ps;
 	
 	
 	public Modele() {
 		
 	}
 	
-	public void connexion()  {
+	public static void connexion()  {
 		//Methodes
 		System.setProperty( "file.encoding", "UTF-8" );
 		try {
@@ -32,7 +32,7 @@ public class Modele {
 		}
 	}
 	
-	public void deconnexion() {
+	public static void deconnexion() {
 		//Fermeture de la connexion a la BDD
 		try {
 			connexion.close();
@@ -41,7 +41,7 @@ public class Modele {
 		}
 	}
 	
-	public boolean inserer(int unNum, String unNom, String unPrenom, String unEmail, String unComm) {
+	public static boolean inserer(int unNum, String unNom, String unPrenom, String unEmail, String unComm) {
 		//Insertion
 		boolean rep = false;
 		try {
@@ -57,7 +57,7 @@ public class Modele {
 		
 	}
 	
-	public boolean supprimer(int unNum) {
+	public static boolean supprimer(int unNum) {
 		//Suppression
 		System.setProperty( "file.encoding", "UTF-8" );
 		boolean rep = false;
@@ -75,7 +75,7 @@ public class Modele {
 		return rep;
 	}
 	
-	public boolean selectConnexion(String unPseudo, String unMdp) {
+	public static boolean selectConnexion(String unPseudo, String unMdp) {
 		boolean rep = false;
 		int connect = 0;
 		try {
@@ -93,6 +93,7 @@ public class Modele {
 			
 		}catch(SQLException e){
 			e.printStackTrace();
+			System.out.println("fdp");
 		}
 		return rep;
 	}
