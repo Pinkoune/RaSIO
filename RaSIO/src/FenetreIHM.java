@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class FenetreIHM extends JFrame implements ActionListener {
 	
 	private JPanel monPanel;
-	private JPanel panelRep;
 	private JTextField jtfUser;
 	private JPasswordField jpfMdp;
 	private JButton jbValider;
@@ -21,7 +20,6 @@ public class FenetreIHM extends JFrame implements ActionListener {
 	
 	
 	public FenetreIHM() {
-		
 		System.setProperty( "file.encoding", "UTF-8" );
         monPanel = new JPanel () ;
         

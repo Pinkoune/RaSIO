@@ -9,12 +9,14 @@ public class Modele {
 	private int count;
 	private PreparedStatement ps;
 	
+	
 	public Modele() {
 		
 	}
 	
 	public void connexion()  {
 		//Methodes
+		System.setProperty( "file.encoding", "UTF-8" );
 		try {
 			//Import du driver mysql connector
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -22,11 +24,11 @@ public class Modele {
 			connexion = DriverManager.getConnection("jdbc:mysql://localhost/rasio?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC", "root", "root");
 		} catch (ClassNotFoundException erreur) { //Erreur du driver
 			erreur.printStackTrace();
-			System.out.println("Le Driver n'a pas pu etre charge.");
+			System.out.println("Le Driver n'a pas pu etre chargé.");
 			
 		} catch (SQLException e) { //Erreur de la connexion BDD
-			System.out.println("Erreur de la connexion a la BDD.");
 			e.printStackTrace();
+			System.out.println("Erreur de la connexion à la BDD.");
 		}
 	}
 	
@@ -57,13 +59,14 @@ public class Modele {
 	
 	public boolean supprimer(int unNum) {
 		//Suppression
+		System.setProperty( "file.encoding", "UTF-8" );
 		boolean rep = false;
 		try {
 			st = connexion.createStatement();
 			String req = ("DELETE FROM contacts WHERE numero = "+ unNum);
 			count = st.executeUpdate(req);
 			if(count == 1) {
-				System.out.println(count + " ligne supprimee.");
+				System.out.println(count + " ligne supprimée.");
 			}
 			rep = true;
 		} catch (SQLException e) {
