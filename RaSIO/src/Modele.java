@@ -21,14 +21,14 @@ public class Modele {
 			//Import du driver mysql connector
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			//Connexion a la BDD
-			connexion = DriverManager.getConnection("jdbc:mysql://localhost/rasio?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC", "root", "root");
+			connexion = DriverManager.getConnection("jdbc:mysql://localhost/rasio?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC", "root", "");
 		} catch (ClassNotFoundException erreur) { //Erreur du driver
 			erreur.printStackTrace();
-			System.out.println("Le Driver n'a pas pu etre chargé.");
+			System.out.println("Le Driver n'a pas pu etre charge.");
 			
 		} catch (SQLException e) { //Erreur de la connexion BDD
 			e.printStackTrace();
-			System.out.println("Erreur de la connexion à la BDD.");
+			System.out.println("Erreur de la connexion a la BDD.");
 		}
 	}
 	
@@ -66,7 +66,7 @@ public class Modele {
 			String req = ("DELETE FROM contacts WHERE numero = "+ unNum);
 			count = st.executeUpdate(req);
 			if(count == 1) {
-				System.out.println(count + " ligne supprimée.");
+				System.out.println(count + " ligne supprim�e.");
 			}
 			rep = true;
 		} catch (SQLException e) {
@@ -79,7 +79,7 @@ public class Modele {
 		boolean rep = false;
 		int connect = 0;
 		try {
-			ps = connexion.prepareStatement("SELECT COUNT(*) AS connect FROM Utilisateur WHERE pseudo = ? AND mdp = ? ;");
+			ps = connexion.prepareStatement("SELECT COUNT(*) AS connect FROM utilisateur WHERE pseudo = ? AND mdp = ? ;");
 			ps.setString(1, unPseudo);
 			ps.setString(2, unMdp);
 			rs = ps.executeQuery();

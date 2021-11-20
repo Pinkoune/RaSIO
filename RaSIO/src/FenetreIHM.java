@@ -7,23 +7,34 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class FenetreIHM extends JFrame implements ActionListener {
 	
 	private JPanel monPanel;
+	private JPanel monPanelGlobal = new JPanel();
 	private JTextField jtfUser;
+	private JTextField monTextField;
 	private JPasswordField jpfMdp;
 	private JButton jbValider;
 	private JLabel lblUser;
 	private JLabel lblMdp;
 	
+	private Liste uneListe;
 	
-	public FenetreIHM() {
+	
+	public FenetreIHM(Liste uneListe) {
+		
+		this.uneListe = uneListe;
+		
 		System.setProperty( "file.encoding", "UTF-8" );
 
 	    monPanel = new JPanel();
 	    monPanel.setLayout(new GridBagLayout()); 
+	    
+	    monPanelGlobal = new JPanel();
+	    monPanelGlobal.setLayout(new BorderLayout());
 	    
 	    // Crée un objet de contraintes
         GridBagConstraints c = new GridBagConstraints(); 
@@ -58,6 +69,8 @@ public class FenetreIHM extends JFrame implements ActionListener {
         this.lblMdp = new JLabel("Mot de passe :");
         this.jbValider = new JButton("Valider");
         
+        this.jbValider.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "MonAction");
+        this.jbValider.getActionMap().put("MonAction", new MonAction());
         
         monPanel.add(lblUser);
         monPanel.add(jtfUser);
@@ -70,9 +83,15 @@ public class FenetreIHM extends JFrame implements ActionListener {
         
         
         this.setAlwaysOnTop(true);
-        this.getContentPane().add(monPanel);
+        this.monPanelGlobal.add(this.monPanel);
+        this.getContentPane().add(monPanelGlobal);
         this.setVisible(true);
 	}
+	
+	//les getter et setter
+	  public JPanel getMonPanelGlobal() {
+	    return monPanelGlobal;
+	  }
 	
 	
 	public void actionPerformed (ActionEvent e) {
@@ -81,12 +100,22 @@ public class FenetreIHM extends JFrame implements ActionListener {
 			String mdp = jpfMdp.getText();
 			JLabel lblRep = new JLabel("Identifiant incorrect.");
 			if(Modele.selectConnexion(pseudo, mdp)) {
-				lblRep = new JLabel("Vous etes connecte.");
+				this.dispose();
+		    	new Accueil(uneListe).getMonPanelGlobal();
+
 			}
-			monPanel.add(lblRep);
-			monPanel.revalidate();
-			monPanel.repaint();
+			this.monPanel.removeAll();
+			this.monPanel.add(lblRep);
+			this.monPanel.revalidate();
+			this.monPanel.repaint();
 		}
+	}
+	
+	private class MonAction extends AbstractAction { 
+		 
+		@Override
+		public void actionPerformed(ActionEvent ae) { 		
+	    } 
 	}
 }
 
