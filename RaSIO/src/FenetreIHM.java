@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class FenetreIHM extends JFrame implements ActionListener {
@@ -26,8 +27,8 @@ public class FenetreIHM extends JFrame implements ActionListener {
 		
 		System.setProperty( "file.encoding", "UTF-8" );
 
-	    monPanel = new JPanel();
-	    monPanel.setLayout(new GridBagLayout()); 
+	    this.monPanel = new JPanel();
+	    this.monPanel.setLayout(new GridBagLayout());
 	    
 	    monPanelGlobal = new JPanel();
 	    monPanelGlobal.setLayout(new BorderLayout());
@@ -65,9 +66,6 @@ public class FenetreIHM extends JFrame implements ActionListener {
         this.lblMdp = new JLabel("Mot de passe :");
         this.jbValider = new JButton("Valider");
         
-        this.jbValider.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "MonAction");
-        this.jbValider.getActionMap().put("MonAction", new MonAction());
-        
         monPanel.add(lblUser);
         monPanel.add(jtfUser);
         
@@ -77,7 +75,7 @@ public class FenetreIHM extends JFrame implements ActionListener {
         jbValider.addActionListener(this);
         monPanel.add(jbValider);
         
-        
+        this.getRootPane().setDefaultButton(jbValider);
         this.setAlwaysOnTop(true);
         this.monPanelGlobal.add(this.monPanel);
         this.getContentPane().add(monPanelGlobal);
@@ -105,13 +103,6 @@ public class FenetreIHM extends JFrame implements ActionListener {
 			this.monPanel.revalidate();
 			this.monPanel.repaint();
 		}
-	}
-	
-	private class MonAction extends AbstractAction { 
-		 
-		@Override
-		public void actionPerformed(ActionEvent ae) { 		
-	    } 
 	}
 }
 

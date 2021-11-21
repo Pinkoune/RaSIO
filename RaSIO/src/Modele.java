@@ -133,6 +133,25 @@ public class Modele {
 		return result;
 	}
 	
+	public static ArrayList<ContenuCourse> affichageCourse(){
+        ArrayList <ContenuCourse> listeCourse;
+        listeCourse = new ArrayList<ContenuCourse>();
+        try {
+        	st = connexion.createStatement();
+            rs = st.executeQuery("SELECT * FROM course");
+            while (rs.next()) {
+                String nomCourse = rs.getString(1);
+                String typeCourse = rs.getString(2);
+                int nbSpec = rs.getInt(3);
+                listeCourse.add(new ContenuCourse(nomCourse, typeCourse, nbSpec));
+            }
+        } catch (Exception e) {
+        	System.out.println("Erreur dans l'affichage de la course.");
+        	e.printStackTrace();
+        }
+        return listeCourse;
+    }
+	
 	/**
 	 * Requetes des Ecuries
 	 * @param unNomEcu
@@ -215,6 +234,25 @@ public class Modele {
 		return result;
 	}
 	
+	public static ArrayList<ContenuEcurie> affichageEcurie(){
+        ArrayList <ContenuEcurie> listeEcurie;
+        listeEcurie = new ArrayList<ContenuEcurie>();
+        try {
+        	st = connexion.createStatement();
+            rs = st.executeQuery("SELECT * FROM ecurie");
+            while (rs.next()) {
+                String nomEcu = rs.getString(1);
+                String sponsorEcu = rs.getString(2);
+                String motorEcu = rs.getString(3);
+                listeEcurie.add(new ContenuEcurie(nomEcu, sponsorEcu, motorEcu));
+            }
+        } catch (Exception e) {
+        	System.out.println("Erreur dans l'affichage des ecuries.");
+        	e.printStackTrace();
+        }
+        return listeEcurie;
+    }
+	
 	/**
 	 * Requetes des circuits
 	 * @param unNomCircuit
@@ -296,6 +334,25 @@ public class Modele {
 		}
 		return result;
 	}
+	
+	public static ArrayList<ContenuCircuit> affichageCircuit(){
+        ArrayList <ContenuCircuit> listeCircuit;
+        listeCircuit = new ArrayList<ContenuCircuit>();
+        try {
+        	st = connexion.createStatement();
+            rs = st.executeQuery("SELECT * FROM circuit");
+            while (rs.next()) {
+                String nomCircuit = rs.getString(1);
+                float tailleCircuit = rs.getFloat(2);
+                String paysCircuit = rs.getString(3);
+                listeCircuit.add(new ContenuCircuit(nomCircuit, tailleCircuit, paysCircuit));
+            }
+        } catch (Exception e) {
+        	System.out.println("Erreur dans l'affichage des circuits.");
+        	e.printStackTrace();
+        }
+        return listeCircuit;
+    }
 	
 	/**
 	 * Requete de la page connexion

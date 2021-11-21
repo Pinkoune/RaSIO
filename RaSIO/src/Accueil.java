@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -36,17 +37,20 @@ public class Accueil extends JFrame implements ActionListener {
   private JMenuItem btnAjouterCourse;
   private JMenuItem btnSupprimerCourse;
   private JMenuItem btnRechercherCourse;
+  private JMenuItem btnAffichageCourse;
   
-  //Les boutons ecuries
+  //Les boutons ecurie
   private JMenuItem btnAjouterEcurie;
   private JMenuItem btnSupprimerEcurie;
   private JMenuItem btnRechercherEcurie;
+  private JMenuItem btnAffichageEcurie;
   
-  //Les boutons circuits
+  //Les boutons circuit
   private JMenuItem btnAjouterCircuit;
   private JMenuItem btnSupprimerCircuit;
   private JMenuItem btnRechercherCircuit;
-  
+  private JMenuItem btnAffichageCircuit;
+
   
   private JLabel lblMessage;
 
@@ -76,25 +80,31 @@ public class Accueil extends JFrame implements ActionListener {
     JMenuBar jMenu = new JMenuBar();
 
     //Creation des elements du menu course
+    this.btnAffichageCourse = new JMenuItem("Afficher les courses");
     this.btnAjouterCourse = new JMenuItem("Ajouter une course");
     this.btnSupprimerCourse = new JMenuItem("Supprimer une course");
     this.btnRechercherCourse = new JMenuItem("Rechercher une course");
+    this.courses.add(btnAffichageCourse);
     this.courses.add(btnAjouterCourse);
     this.courses.add(btnSupprimerCourse);
     this.courses.add(btnRechercherCourse);
     
     //Creation des elements du menu ecurie
+    this.btnAffichageEcurie = new JMenuItem("Afficher les ecuries");
     this.btnAjouterEcurie = new JMenuItem("Ajouter une ecurie");
     this.btnSupprimerEcurie = new JMenuItem("Supprimer une ecurie");
     this.btnRechercherEcurie = new JMenuItem("Rechercher une ecurie");
+    this.ecuries.add(btnAffichageEcurie);
     this.ecuries.add(this.btnAjouterEcurie);
     this.ecuries.add(this.btnSupprimerEcurie);
     this.ecuries.add(this.btnRechercherEcurie);
     
     //Creation des elements du menu circuit
+    this.btnAffichageCircuit = new JMenuItem("Afficher les circuits");
     this.btnAjouterCircuit = new JMenuItem("Ajouter une circuit");
     this.btnSupprimerCircuit = new JMenuItem("Supprimer une circuit");
     this.btnRechercherCircuit = new JMenuItem("Rechercher une circuit");
+    this.circuits.add(btnAffichageCircuit);
     this.circuits.add(this.btnAjouterCircuit);
     this.circuits.add(this.btnSupprimerCircuit);
     this.circuits.add(this.btnRechercherCircuit);
@@ -105,16 +115,19 @@ public class Accueil extends JFrame implements ActionListener {
     this.btnAjouterCourse.addActionListener(this);
     this.btnSupprimerCourse.addActionListener(this);
     this.btnRechercherCourse.addActionListener(this);
+    this.btnAffichageCourse.addActionListener(this);
     
-    //Ecoute des items du menu course
+    //Ecoute des items du menu ecurie
     this.btnAjouterEcurie.addActionListener(this);
     this.btnSupprimerEcurie.addActionListener(this);
     this.btnRechercherEcurie.addActionListener(this);
+    this.btnAffichageEcurie.addActionListener(this);
     
-    //Ecoute des items du menu course
+    //Ecoute des items du menu circuit
     this.btnAjouterCircuit.addActionListener(this);
     this.btnSupprimerCircuit.addActionListener(this);
     this.btnRechercherCircuit.addActionListener(this);
+    this.btnAffichageCircuit.addActionListener(this);
 
     // Ajout de l'element au menu 
     jMenu.add(courses);
@@ -166,6 +179,15 @@ public class Accueil extends JFrame implements ActionListener {
 		this.getContentPane().revalidate();
 		this.getContentPane().repaint();
 		
+    } else if (e.getSource().equals(btnAffichageCourse)) {
+        ArrayList<ContenuCourse> listeCourse;
+        listeCourse = new ArrayList<ContenuCourse>();
+        listeCourse = Modele.affichageCourse();
+    	this.getContentPane().removeAll();
+		this.getContentPane().add(new AffCourse(listeCourse).getMonPanelGlobal());
+		this.getContentPane().revalidate();
+		this.getContentPane().repaint();
+		
 	//Boutons des Ecuries
     } else if (e.getSource().equals(btnAjouterEcurie)) {
     	
@@ -188,6 +210,15 @@ public class Accueil extends JFrame implements ActionListener {
         this.getContentPane().revalidate();
         this.getContentPane().repaint();
         
+  	} else if (e.getSource().equals(btnAffichageEcurie)) {
+        ArrayList<ContenuEcurie> listeEcurie;
+        listeEcurie = new ArrayList<ContenuEcurie>();
+        listeEcurie = Modele.affichageEcurie();
+    	this.getContentPane().removeAll();
+		this.getContentPane().add(new AffEcurie(listeEcurie).getMonPanelGlobal());
+		this.getContentPane().revalidate();
+		this.getContentPane().repaint();
+        
     // Boutons des Circuits
   	} else if (e.getSource().equals(btnAjouterCircuit)) {
     	
@@ -209,6 +240,15 @@ public class Accueil extends JFrame implements ActionListener {
         this.getContentPane().add(new RechCircuit().getMonPanelGlobal());
         this.getContentPane().revalidate();
         this.getContentPane().repaint();
+        
+  	} else if (e.getSource().equals(btnAffichageCircuit)) {
+        ArrayList<ContenuCircuit> listeCircuit;
+        listeCircuit = new ArrayList<ContenuCircuit>();
+        listeCircuit = Modele.affichageCircuit();
+    	this.getContentPane().removeAll();
+		this.getContentPane().add(new AffCircuit(listeCircuit).getMonPanelGlobal());
+		this.getContentPane().revalidate();
+		this.getContentPane().repaint();
       
   	}
 

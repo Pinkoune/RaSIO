@@ -96,6 +96,7 @@ public class AjoutCircuit extends JFrame implements ActionListener{
 	    this.panelChamps.add(lblInsertion);
 	
 	    //Toujours à la fin
+	    this.getRootPane().setDefaultButton(btnValider);
   		this.setAlwaysOnTop(true);
   		this.getContentPane().add(panelAjoutCircuit);
   		this.monPanelGlobal.add(panelAjoutCircuit, BorderLayout.CENTER);

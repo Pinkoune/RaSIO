@@ -77,6 +77,7 @@ public class SuppCircuit extends JFrame implements ActionListener{
         this.panelChamps.add(lblInsertion);
 
         //Toujours à la fin
+        this.getRootPane().setDefaultButton(btnValider);
         this.setAlwaysOnTop(true);
         this.getContentPane().add(panelSuppCircuit);
         this.monPanelGlobal.add(panelSuppCircuit, BorderLayout.CENTER);

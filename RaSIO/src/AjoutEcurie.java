@@ -96,6 +96,7 @@ public class AjoutEcurie extends JFrame implements ActionListener{
 	    this.panelChamps.add(lblInsertion);
 	
 	    //Toujours à la fin
+	    this.getRootPane().setDefaultButton(btnValider);
   		this.setAlwaysOnTop(true);
   		this.getContentPane().add(panelAjoutEcurie);
   		this.monPanelGlobal.add(panelAjoutEcurie, BorderLayout.CENTER);

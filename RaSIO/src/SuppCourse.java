@@ -39,7 +39,7 @@ public class SuppCourse extends JFrame implements ActionListener{
         this.panelMessage = new JPanel();
         this.panelChamps = new JPanel();
         this.panelBtnQuitter = new JPanel();
-        monPanelGlobal.setLayout(new BorderLayout());
+        this.monPanelGlobal.setLayout(new BorderLayout());
 
         //Background des panels
         this.panelSuppCourse.setBackground(Color.white);
@@ -82,6 +82,7 @@ public class SuppCourse extends JFrame implements ActionListener{
         this.panelChamps.add(lblInsertion);
 
         //Toujours à la fin
+        this.getRootPane().setDefaultButton(btnValider);
         this.setAlwaysOnTop(true);
         this.getContentPane().add(panelSuppCourse);
         this.monPanelGlobal.add(panelSuppCourse, BorderLayout.CENTER);

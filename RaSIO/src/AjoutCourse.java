@@ -97,6 +97,7 @@ public class AjoutCourse extends JFrame implements ActionListener{
 	
 	
 	    //Toujours à la fin
+	    this.getRootPane().setDefaultButton(btnValider);
   		this.setAlwaysOnTop(true);
   		this.getContentPane().add(panelAjoutCourse);
   		this.monPanelGlobal.add(panelAjoutCourse, BorderLayout.CENTER);

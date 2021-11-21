@@ -76,6 +76,7 @@ public class RechCircuit extends JFrame implements ActionListener {
         this.panelMil.add(lblInsertion);
         
         //Toujours à la fin
+        this.getRootPane().setDefaultButton(btnValider1);
         this.setAlwaysOnTop(true);
         this.getContentPane().add(monPanel);
         this.monPanelGlobal.add(monPanel, BorderLayout.CENTER);
