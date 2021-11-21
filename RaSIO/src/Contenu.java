@@ -5,7 +5,7 @@
  */
 
 public abstract class Contenu {
-	//attributs priv�s
+	//attributs prives
 	private String marque;
 	private String matiere;
 	private String type;

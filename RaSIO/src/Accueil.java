@@ -49,7 +49,7 @@ public class Accueil extends JFrame implements ActionListener {
   
   
   private JLabel lblMessage;
-  private Liste uneListe;
+  private Liste laListe;
 
 
   //CONSTRUCTEURS
@@ -60,7 +60,7 @@ public class Accueil extends JFrame implements ActionListener {
 	  this.setSize(700, 500);
     
 	  
-	  this.uneListe = uneListe;
+	  this.laListe = uneListe;
 
     
     
@@ -147,38 +147,75 @@ public class Accueil extends JFrame implements ActionListener {
     return monPanelGlobal;
   }
 
- 
-
   //Lance le changement de panel
   public void actionPerformed(ActionEvent e) {
 
-    if (e.getSource().equals(btnAjouterCourse)) {							//Panel d'Ajout si bouton cliqué.
-    	this.getContentPane().removeAll();  			      			 //on va supprimer le panel
-    	//this.getContentPane().add(new FenetreInstruments(uneListe).getMonPanelGlobal());       //on va ajouter un panel
-    	this.getContentPane().revalidate();								//
+	//Boutons des Courses
+    if (e.getSource().equals(btnAjouterCourse)) {
+    	this.getContentPane().removeAll();
+    	this.getContentPane().add(new AjoutCourse(laListe).getMonPanelGlobal());
+    	this.getContentPane().revalidate();
     	this.getContentPane().repaint();
     	
-    } else if (e.getSource().equals(btnAjouterCourse)) {					//Panel d'Affichage si bouton cliqué.
+    } else if (e.getSource().equals(btnSupprimerCourse)) {
       
-    	this.getContentPane().removeAll();      					     //on va supprimer le panel
-		//this.getContentPane().add(new FenetreAffichage(uneListe).getMonPanelGlobal());       //on va ajouter un panel
+    	this.getContentPane().removeAll();
+		this.getContentPane().add(new SuppCourse(laListe).getMonPanelGlobal());
 		this.getContentPane().revalidate();
 		this.getContentPane().repaint();
 		
-    } else if (e.getSource().equals(btnAjouterCourse)) {					//Panel de suppression si bouton cliqué.
+    } else if (e.getSource().equals(btnRechercherCourse)) {
         
-    	this.getContentPane().removeAll();      					     //on va supprimer le panel
-		//this.getContentPane().add(new FenetreRecherche(uneListe).getMonPanelGlobal());       //on va ajouter un panel
+    	this.getContentPane().removeAll();
+		//this.getContentPane().add(new FenetreRecherche(uneListe).getMonPanelGlobal());
 		this.getContentPane().revalidate();
 		this.getContentPane().repaint();
 		
-    } else if (e.getSource().equals(btnAjouterCourse)) {				//Panel de suppression si bouton cliqué.
+	//Boutons des Ecuries
+    } else if (e.getSource().equals(btnAjouterEcurie)) {
     	
-      this.getContentPane().removeAll();       							//on va supprimer le panel
-      //this.getContentPane().add(new FenetreSuppression(uneListe).getMonPanelGlobal());       //on va ajouter un panel
+      this.getContentPane().removeAll();
+      this.getContentPane().add(new AjoutEcurie(laListe).getMonPanelGlobal());
       this.getContentPane().revalidate();
       this.getContentPane().repaint();
-    }
+    
+  	} else if (e.getSource().equals(btnSupprimerEcurie)) {
+  	
+      this.getContentPane().removeAll();
+      this.getContentPane().add(new SuppEcurie(laListe).getMonPanelGlobal());
+      this.getContentPane().revalidate();
+      this.getContentPane().repaint();
+      
+  	} else if (e.getSource().equals(btnRechercherEcurie)) {
+    	
+        this.getContentPane().removeAll();
+        //this.getContentPane().add(new AjoutEcurie(laListe).getMonPanelGlobal());
+        this.getContentPane().revalidate();
+        this.getContentPane().repaint();
+        
+    // Boutons des Circuits
+  	} else if (e.getSource().equals(btnAjouterCircuit)) {
+    	
+        this.getContentPane().removeAll();
+        this.getContentPane().add(new AjoutCircuit(laListe).getMonPanelGlobal());
+        this.getContentPane().revalidate();
+        this.getContentPane().repaint();
+    
+  	} else if (e.getSource().equals(btnSupprimerCircuit)) {
+  	
+      this.getContentPane().removeAll();
+      this.getContentPane().add(new SuppCircuit(laListe).getMonPanelGlobal());
+      this.getContentPane().revalidate();
+      this.getContentPane().repaint();
+    
+  	} else if (e.getSource().equals(btnRechercherCircuit)) {
+  	  	
+        this.getContentPane().removeAll();
+        this.getContentPane().add(new AjoutEcurie(laListe).getMonPanelGlobal());
+        this.getContentPane().revalidate();
+        this.getContentPane().repaint();
+      
+  	}
 
   }
   

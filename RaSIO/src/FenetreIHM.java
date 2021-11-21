@@ -36,10 +36,10 @@ public class FenetreIHM extends JFrame implements ActionListener {
 	    monPanelGlobal = new JPanel();
 	    monPanelGlobal.setLayout(new BorderLayout());
 	    
-	    // Crée un objet de contraintes
+	    // Cree un objet de contraintes
         GridBagConstraints c = new GridBagConstraints(); 
         
-        // Spécifie le padding externe de tous les composants
+        // Specifie le padding externe de tous les composants
         c.insets = new Insets(1, 1, 1, 1); 
         
         // colonne 0
@@ -92,7 +92,7 @@ public class FenetreIHM extends JFrame implements ActionListener {
 	  public JPanel getMonPanelGlobal() {
 	    return monPanelGlobal;
 	  }
-	
+	  
 	
 	public void actionPerformed (ActionEvent e) {
 		if(e.getSource() == jbValider) {
