@@ -37,12 +37,8 @@ public class AjoutCourse extends JFrame implements ActionListener{
 	private JButton btnValider;
 	private JButton btnRetour;
 	
-	private Liste laListe;
-	
 	//Constructeur
-	public AjoutCourse(Liste uneListe) {
-		
-		this.laListe = uneListe;
+	public AjoutCourse() {
 	
 	    //Instanciation des panels
 	    this.panelAjoutCourse = new JPanel();
@@ -136,7 +132,7 @@ public class AjoutCourse extends JFrame implements ActionListener{
         }
 		if(e.getSource() == btnRetour) {
 			panelAjoutCourse.removeAll();
-			panelAjoutCourse.add(new Accueil(laListe).getMonPanelGlobal());
+			panelAjoutCourse.add(new Accueil().getMonPanelGlobal());
 			panelAjoutCourse.revalidate();
 			panelAjoutCourse.repaint();
 		}

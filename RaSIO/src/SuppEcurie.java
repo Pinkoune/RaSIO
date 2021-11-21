@@ -33,11 +33,7 @@ public class SuppEcurie extends JFrame implements ActionListener{
       private JButton btnValider;
       private JButton btnRetour;
       
-      private Liste laListe;
-      
-      public SuppEcurie(Liste uneListe) {
-    	  
-    	this.laListe = uneListe;
+      public SuppEcurie() {
     
         //Instanciation des panels
         this.panelSuppEcurie = new JPanel();
@@ -115,7 +111,7 @@ public class SuppEcurie extends JFrame implements ActionListener{
         }
         if(e.getSource() == btnRetour) {
         	panelSuppEcurie.removeAll();
-        	panelSuppEcurie.add(new Accueil(laListe).getMonPanelGlobal());
+        	panelSuppEcurie.add(new Accueil().getMonPanelGlobal());
         	panelSuppEcurie.revalidate();
         	panelSuppEcurie.repaint();
 		}

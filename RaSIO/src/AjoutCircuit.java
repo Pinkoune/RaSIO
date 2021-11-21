@@ -37,12 +37,8 @@ public class AjoutCircuit extends JFrame implements ActionListener{
 	private JButton btnValider;
 	private JButton btnRetour;
 	
-	private Liste laListe;
-	
 	//Constructeur
-	public AjoutCircuit(Liste uneListe) {
-		
-		this.laListe = uneListe;
+	public AjoutCircuit() {
 	
 	    //Instanciation des panels
 	    this.panelAjoutCircuit = new JPanel();
@@ -124,7 +120,7 @@ public class AjoutCircuit extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
         if(e.getSource() == btnValider) {
             String nomCircuit = jtfNomCourse.getText();
-            float tailleCircuit = Integer.parseInt(jtfTypeCourse.getText());
+            float tailleCircuit = Float.parseFloat(jtfTypeCourse.getText());
             String paysCircuit = jtfNbSpectateur.getText();
             boolean rep = Modele.ajoutCircuit(nomCircuit, tailleCircuit, paysCircuit);
             if(rep) {
@@ -136,7 +132,7 @@ public class AjoutCircuit extends JFrame implements ActionListener{
         }
 		if(e.getSource() == btnRetour) {
 			panelAjoutCircuit.removeAll();
-			panelAjoutCircuit.add(new Accueil(laListe).getMonPanelGlobal());
+			panelAjoutCircuit.add(new Accueil().getMonPanelGlobal());
 			panelAjoutCircuit.revalidate();
 			panelAjoutCircuit.repaint();
 		}

@@ -37,12 +37,8 @@ public class AjoutEcurie extends JFrame implements ActionListener{
 	private JButton btnValider;
 	private JButton btnRetour;
 	
-	private Liste laListe;
-	
 	//Constructeur
-	public AjoutEcurie(Liste uneListe) {
-		
-		this.laListe = uneListe;
+	public AjoutEcurie() {
 	
 	    //Instanciation des panels
 	    this.panelAjoutEcurie = new JPanel();
@@ -136,7 +132,7 @@ public class AjoutEcurie extends JFrame implements ActionListener{
         }
 		if(e.getSource() == btnRetour) {
 			panelAjoutEcurie.removeAll();
-			panelAjoutEcurie.add(new Accueil(laListe).getMonPanelGlobal());
+			panelAjoutEcurie.add(new Accueil().getMonPanelGlobal());
 			panelAjoutEcurie.revalidate();
 			panelAjoutEcurie.repaint();
 		}

@@ -33,11 +33,7 @@ public class SuppCourse extends JFrame implements ActionListener{
       private JButton btnValider;
       private JButton btnRetour;
       
-      private Liste laListe;
-      
-      public SuppCourse(Liste uneListe) {
-    	  
-    	this.laListe = uneListe;
+      public SuppCourse() {
     
         //Instanciation des panels
         this.panelSuppCourse = new JPanel();
@@ -115,7 +111,7 @@ public class SuppCourse extends JFrame implements ActionListener{
         }
         if(e.getSource() == btnRetour) {
         	panelSuppCourse.removeAll();
-        	panelSuppCourse.add(new Accueil(laListe).getMonPanelGlobal());
+        	panelSuppCourse.add(new Accueil().getMonPanelGlobal());
         	panelSuppCourse.revalidate();
         	panelSuppCourse.repaint();
 		}

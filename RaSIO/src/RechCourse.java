@@ -16,11 +16,8 @@ public class RechCourse extends JFrame implements ActionListener {
 	private JLabel lblSupp1;
 	private JTextField jtfSupp1;
 	private JButton btnValider1;
-	private Liste laListe;
 	
-	public RechCourse(Liste uneListe) {
-		
-		this.laListe = uneListe;
+	public RechCourse() {
 
         
         monPanel = new JPanel ( ) ;
@@ -32,15 +29,15 @@ public class RechCourse extends JFrame implements ActionListener {
         panelHaut.setLayout(new FlowLayout());
         monPanelGlobal.setLayout(new BorderLayout());
         
-        lblSupp1 = new JLabel("Entrez la matiere a rechercher : ");
+        lblSupp1 = new JLabel("Entrez le nom de la course : ");
         jtfSupp1 = new JTextField("");
         jtfSupp1.setPreferredSize(new Dimension(150, 30));
 
         btnValider1 = new JButton("Valider");
         btnValider1.addActionListener(new ActionListener() {
         public void actionPerformed (ActionEvent e) {
-    		String matiere = jtfSupp1.getText();
-    		JLabel result = new JLabel (laListe.recherche(matiere));
+    		String nomCourse = jtfSupp1.getText();
+    		JLabel result = new JLabel (Modele.rechercheCourse(nomCourse));
     		panelRech.removeAll();
     		panelRech.add(result);
     		panelRech.revalidate();
@@ -59,7 +56,7 @@ public class RechCourse extends JFrame implements ActionListener {
 
         
         this.setAlwaysOnTop(true);
-        this.getContentPane().add(monPanel); // UN SEUL panel DANS LE GET CONTENT
+        this.getContentPane().add(monPanel);
         this.monPanelGlobal.add(monPanel, BorderLayout.CENTER);
         this.getContentPane().add(this.monPanelGlobal);
 	}

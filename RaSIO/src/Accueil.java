@@ -49,19 +49,14 @@ public class Accueil extends JFrame implements ActionListener {
   
   
   private JLabel lblMessage;
-  private Liste laListe;
 
 
   //CONSTRUCTEURS
-  public Accueil(Liste uneListe) {
+  public Accueil() {
 	  this.setTitle("RaSio");  
 	  this.setLocationRelativeTo(null);
 	  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	  this.setSize(700, 500);
-    
-	  
-	  this.laListe = uneListe;
-
     
     
     //INSTANCIATION DU PANEL GLOBAL
@@ -153,21 +148,21 @@ public class Accueil extends JFrame implements ActionListener {
 	//Boutons des Courses
     if (e.getSource().equals(btnAjouterCourse)) {
     	this.getContentPane().removeAll();
-    	this.getContentPane().add(new AjoutCourse(laListe).getMonPanelGlobal());
+    	this.getContentPane().add(new AjoutCourse().getMonPanelGlobal());
     	this.getContentPane().revalidate();
     	this.getContentPane().repaint();
     	
     } else if (e.getSource().equals(btnSupprimerCourse)) {
       
     	this.getContentPane().removeAll();
-		this.getContentPane().add(new SuppCourse(laListe).getMonPanelGlobal());
+		this.getContentPane().add(new SuppCourse().getMonPanelGlobal());
 		this.getContentPane().revalidate();
 		this.getContentPane().repaint();
 		
     } else if (e.getSource().equals(btnRechercherCourse)) {
         
     	this.getContentPane().removeAll();
-		//this.getContentPane().add(new FenetreRecherche(uneListe).getMonPanelGlobal());
+		this.getContentPane().add(new RechCourse().getMonPanelGlobal());
 		this.getContentPane().revalidate();
 		this.getContentPane().repaint();
 		
@@ -175,21 +170,21 @@ public class Accueil extends JFrame implements ActionListener {
     } else if (e.getSource().equals(btnAjouterEcurie)) {
     	
       this.getContentPane().removeAll();
-      this.getContentPane().add(new AjoutEcurie(laListe).getMonPanelGlobal());
+      this.getContentPane().add(new AjoutEcurie().getMonPanelGlobal());
       this.getContentPane().revalidate();
       this.getContentPane().repaint();
     
   	} else if (e.getSource().equals(btnSupprimerEcurie)) {
   	
       this.getContentPane().removeAll();
-      this.getContentPane().add(new SuppEcurie(laListe).getMonPanelGlobal());
+      this.getContentPane().add(new SuppEcurie().getMonPanelGlobal());
       this.getContentPane().revalidate();
       this.getContentPane().repaint();
       
   	} else if (e.getSource().equals(btnRechercherEcurie)) {
     	
         this.getContentPane().removeAll();
-        //this.getContentPane().add(new AjoutEcurie(laListe).getMonPanelGlobal());
+        this.getContentPane().add(new RechEcurie().getMonPanelGlobal());
         this.getContentPane().revalidate();
         this.getContentPane().repaint();
         
@@ -197,21 +192,21 @@ public class Accueil extends JFrame implements ActionListener {
   	} else if (e.getSource().equals(btnAjouterCircuit)) {
     	
         this.getContentPane().removeAll();
-        this.getContentPane().add(new AjoutCircuit(laListe).getMonPanelGlobal());
+        this.getContentPane().add(new AjoutCircuit().getMonPanelGlobal());
         this.getContentPane().revalidate();
         this.getContentPane().repaint();
     
   	} else if (e.getSource().equals(btnSupprimerCircuit)) {
   	
       this.getContentPane().removeAll();
-      this.getContentPane().add(new SuppCircuit(laListe).getMonPanelGlobal());
+      this.getContentPane().add(new SuppCircuit().getMonPanelGlobal());
       this.getContentPane().revalidate();
       this.getContentPane().repaint();
     
   	} else if (e.getSource().equals(btnRechercherCircuit)) {
   	  	
         this.getContentPane().removeAll();
-        this.getContentPane().add(new AjoutEcurie(laListe).getMonPanelGlobal());
+        this.getContentPane().add(new RechCircuit().getMonPanelGlobal());
         this.getContentPane().revalidate();
         this.getContentPane().repaint();
       

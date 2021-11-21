@@ -33,11 +33,7 @@ public class SuppCircuit extends JFrame implements ActionListener{
       private JButton btnValider;
       private JButton btnRetour;
       
-      private Liste laListe;
-      
-      public SuppCircuit(Liste uneListe) {
-    	  
-    	this.laListe = uneListe;
+      public SuppCircuit() {
     
         //Instanciation des panels
         this.panelSuppCircuit = new JPanel();
@@ -115,7 +111,7 @@ public class SuppCircuit extends JFrame implements ActionListener{
         }
         if(e.getSource() == btnRetour) {
         	panelSuppCircuit.removeAll();
-        	panelSuppCircuit.add(new Accueil(laListe).getMonPanelGlobal());
+        	panelSuppCircuit.add(new Accueil().getMonPanelGlobal());
         	panelSuppCircuit.revalidate();
         	panelSuppCircuit.repaint();
 		}

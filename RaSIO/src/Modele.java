@@ -8,10 +8,15 @@ public class Modele {
 	private static ResultSet rs;
 	private static int count;
 	private static PreparedStatement ps;
+	private ArrayList<ContenuCourse> listeCourse;
+	private ArrayList<ContenuEcurie> listeEcurie;
+	private ArrayList<ContenuCircuit> listeCircuit;
 	
 	
 	public Modele() {
-		
+		this.listeCourse = new ArrayList<ContenuCourse>();
+		this.listeEcurie = new ArrayList<ContenuEcurie>();
+		this.listeCircuit = new ArrayList<ContenuCircuit>();
 	}
 	
 	/**
@@ -93,6 +98,41 @@ public class Modele {
 		return rep;
 	}
 	
+	public static String rechercheCourse(String unNomCourse) {
+		//Attributs
+		ArrayList<ContenuCourse> listeCourse = new ArrayList<ContenuCourse>();
+		String result = "\nCette course n'existe pas.";
+		int index = 0;
+        String req;
+        String nom;
+        String type;
+        int nbSpec;
+		//Selection
+		try {
+			st = connexion.createStatement();
+			req = "SELECT * FROM course";
+			rs = st.executeQuery(req);
+			// Pour accéder à chacune des lignes du résultat de la requête :
+			while (rs.next()) {
+				nom = rs.getString(1);
+				type = rs.getString(2);
+				nbSpec = rs.getInt(3);
+				listeCourse.add(new ContenuCourse(nom,type,nbSpec));
+			}
+			
+			while(index < listeCourse.size() && !listeCourse.get(index).getNomCourse().equals(unNomCourse)) {
+				index = index + 1;
+			}
+			if (index < listeCourse.size()) {
+				result = "\nVoici la course : " + listeCourse.get(index).toString();
+			}
+			rs.close() ;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 	/**
 	 * Requetes des Ecuries
 	 * @param unNomEcu
@@ -138,6 +178,41 @@ public class Modele {
 			e.printStackTrace();
 		}
 		return rep;
+	}
+	
+	public static String rechercheEcurie(String unNomEcurie) {
+		//Attributs
+		ArrayList<ContenuEcurie> listeEcurie = new ArrayList<ContenuEcurie>();
+		String result = "\nCette ecurie n'existe pas.";
+		int index = 0;
+        String req;
+        String nom;
+        String sponsor;
+        String motor;
+		//Selection
+		try {
+			st = connexion.createStatement();
+			req = "SELECT * FROM ecurie";
+			rs = st.executeQuery(req);
+			// Pour accéder à chacune des lignes du résultat de la requête :
+			while (rs.next()) {
+				nom = rs.getString(1);
+				sponsor = rs.getString(2);
+				motor = rs.getString(3);
+				listeEcurie.add(new ContenuEcurie(nom,sponsor,motor));
+			}
+			
+			while(index < listeEcurie.size() && !listeEcurie.get(index).getNomEcurie().equals(unNomEcurie)) {
+				index = index + 1;
+			}
+			if (index < listeEcurie.size()) {
+				result = "\nVoici l'ecurie : " + listeEcurie.get(index).toString();
+			}
+			rs.close() ;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 	/**
@@ -187,6 +262,47 @@ public class Modele {
 		return rep;
 	}
 	
+	public static String rechercheCircuit(String unNomCircuit) {
+		//Attributs
+		ArrayList<ContenuCircuit> listeCircuit = new ArrayList<ContenuCircuit>();
+		String result = "\nCe circuit n'existe pas.";
+		int index = 0;
+        String req;
+        String nom;
+        float taille;
+        String pays;
+		//Selection
+		try {
+			st = connexion.createStatement();
+			req = "SELECT * FROM circuit";
+			rs = st.executeQuery(req);
+			// Pour accéder à chacune des lignes du résultat de la requête :
+			while (rs.next()) {
+				nom = rs.getString(1);
+				taille = rs.getFloat(2);
+				pays = rs.getString(3);
+				listeCircuit.add(new ContenuCircuit(nom,taille,pays));
+			}
+			
+			while(index < listeCircuit.size() && !listeCircuit.get(index).getNomCircuit().equals(unNomCircuit)) {
+				index = index + 1;
+			}
+			if (index < listeCircuit.size()) {
+				result = "\nVoici le circuit : " + listeCircuit.get(index).toString();
+			}
+			rs.close() ;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	/**
+	 * Requete de la page connexion
+	 * @param unPseudo
+	 * @param unMdp
+	 * @return
+	 */
 	
 	public static boolean selectConnexion(String unPseudo, String unMdp) {
 		boolean rep = false;
@@ -206,7 +322,7 @@ public class Modele {
 			
 		}catch(SQLException e){
 			e.printStackTrace();
-			System.out.println("fdp");
+			System.out.println("Probleme de connexion, erreur dans le pseudo ou mot de passe.");
 		}
 		return rep;
 	}

@@ -21,12 +21,8 @@ public class FenetreIHM extends JFrame implements ActionListener {
 	private JLabel lblUser;
 	private JLabel lblMdp;
 	
-	private Liste uneListe;
 	
-	
-	public FenetreIHM(Liste uneListe) {
-		
-		this.uneListe = uneListe;
+	public FenetreIHM() {
 		
 		System.setProperty( "file.encoding", "UTF-8" );
 
@@ -101,7 +97,7 @@ public class FenetreIHM extends JFrame implements ActionListener {
 			JLabel lblRep = new JLabel("Identifiant incorrect.");
 			if(Modele.selectConnexion(pseudo, mdp)) {
 				this.dispose();
-		    	new Accueil(uneListe).getMonPanelGlobal();
+		    	new Accueil().getMonPanelGlobal();
 
 			}
 			this.monPanel.removeAll();

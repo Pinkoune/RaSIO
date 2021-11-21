@@ -5,8 +5,7 @@ public class Main {
 		
 		Modele.connexion();
 		
-		Liste maListe = new Liste();
-		FenetreIHM uneFenetre = new FenetreIHM(maListe);
+		FenetreIHM uneFenetre = new FenetreIHM();
 		
 	}
 
