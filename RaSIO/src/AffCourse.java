@@ -1,3 +1,8 @@
+/**
+ * Affichage des courses
+ * @author Jeremy
+ */
+
 import java.awt. * ;
 import java.awt.event.ActionEvent;
 import javax.swing. * ;

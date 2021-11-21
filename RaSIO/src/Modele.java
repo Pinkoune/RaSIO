@@ -1,3 +1,8 @@
+/**
+ * Page du modele
+ * @author Jeremy
+ */
+
 import java.sql.*;
 import java.util.ArrayList;
 

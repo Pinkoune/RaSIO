@@ -1,3 +1,8 @@
+/**
+ * Ajout des Circuits
+ * @author Jeremy
+ */
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

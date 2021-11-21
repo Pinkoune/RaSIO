@@ -1,5 +1,5 @@
 /**
- * Fenetre de recherche
+ * Fenetre de recherche des courses
  * @author Jeremy
  */
 
