@@ -31,7 +31,6 @@ public class SuppCourse extends JFrame implements ActionListener{
       
       //Bouton
       private JButton btnValider;
-      private JButton btnRetour;
       
       public SuppCourse() {
     
@@ -69,8 +68,6 @@ public class SuppCourse extends JFrame implements ActionListener{
         //Instanciation des boutons
         this.btnValider = new JButton("Valider");
         this.btnValider.addActionListener(this);
-        this.btnRetour = new JButton("Retour");
-        this.btnRetour.addActionListener(this);
         
         //Ajout des attributs aux panels
         this.panelSuppCourse.add(panelMessage, BorderLayout.PAGE_START);
@@ -83,8 +80,6 @@ public class SuppCourse extends JFrame implements ActionListener{
         this.panelChamps.add(jtfSuppression);
         this.panelChamps.add(btnValider);
         this.panelChamps.add(lblInsertion);
-
-        this.panelBtnQuitter.add(btnRetour);
 
         //Toujours à la fin
         this.setAlwaysOnTop(true);
@@ -109,12 +104,6 @@ public class SuppCourse extends JFrame implements ActionListener{
                 lblInsertion.setText("Suppression non effectuée."); 
             }
         }
-        if(e.getSource() == btnRetour) {
-        	panelSuppCourse.removeAll();
-        	panelSuppCourse.add(new Accueil().getMonPanelGlobal());
-        	panelSuppCourse.revalidate();
-        	panelSuppCourse.repaint();
-		}
     }
     
 }

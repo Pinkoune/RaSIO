@@ -18,7 +18,6 @@ public class SuppCircuit extends JFrame implements ActionListener{
     private JPanel panelSuppCircuit;
     private JPanel panelMessage;
     private JPanel panelChamps;
-    private JPanel panelBtnQuitter;
     private JPanel monPanelGlobal = new JPanel();
     
     //Label
@@ -31,7 +30,6 @@ public class SuppCircuit extends JFrame implements ActionListener{
       
       //Bouton
       private JButton btnValider;
-      private JButton btnRetour;
       
       public SuppCircuit() {
     
@@ -39,20 +37,17 @@ public class SuppCircuit extends JFrame implements ActionListener{
         this.panelSuppCircuit = new JPanel();
         this.panelMessage = new JPanel();
         this.panelChamps = new JPanel();
-        this.panelBtnQuitter = new JPanel();
         monPanelGlobal.setLayout(new BorderLayout());
 
         //Background des panels
         this.panelSuppCircuit.setBackground(Color.white);
         this.panelMessage.setBackground(Color.green);
         this.panelChamps.setBackground(Color.white);
-        this.panelBtnQuitter.setBackground(Color.white);
 
         //Disposition des panels
         this.panelSuppCircuit.setLayout(new BorderLayout());
         this.panelMessage.setLayout(new FlowLayout());
         this.panelChamps.setLayout(new FlowLayout());
-        this.panelBtnQuitter.setLayout(new FlowLayout());
 
         //Instanciation des messages
         this.lblMessage = new JLabel("Circuit - suppression");
@@ -64,18 +59,15 @@ public class SuppCircuit extends JFrame implements ActionListener{
         this.jtfSuppression.setPreferredSize(new Dimension(150, 30));
         
         //Couleur de la police
-        this.lblMessage.setForeground(Color.white);
+        this.lblMessage.setForeground(Color.black);
         
         //Instanciation des boutons
         this.btnValider = new JButton("Valider");
         this.btnValider.addActionListener(this);
-        this.btnRetour = new JButton("Retour");
-        this.btnRetour.addActionListener(this);
         
         //Ajout des attributs aux panels
         this.panelSuppCircuit.add(panelMessage, BorderLayout.PAGE_START);
         this.panelSuppCircuit.add(panelChamps, BorderLayout.CENTER);
-        this.panelSuppCircuit.add(panelBtnQuitter, BorderLayout.PAGE_END);
         
         this.panelMessage.add(lblMessage);
         
@@ -83,8 +75,6 @@ public class SuppCircuit extends JFrame implements ActionListener{
         this.panelChamps.add(jtfSuppression);
         this.panelChamps.add(btnValider);
         this.panelChamps.add(lblInsertion);
-
-        this.panelBtnQuitter.add(btnRetour);
 
         //Toujours à la fin
         this.setAlwaysOnTop(true);
@@ -109,12 +99,6 @@ public class SuppCircuit extends JFrame implements ActionListener{
                 lblInsertion.setText("Suppression non effectuée."); 
             }
         }
-        if(e.getSource() == btnRetour) {
-        	panelSuppCircuit.removeAll();
-        	panelSuppCircuit.add(new Accueil().getMonPanelGlobal());
-        	panelSuppCircuit.revalidate();
-        	panelSuppCircuit.repaint();
-		}
     }
     
 }

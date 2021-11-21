@@ -18,7 +18,6 @@ public class AjoutEcurie extends JFrame implements ActionListener{
 	private JPanel panelAjoutEcurie;
 	private JPanel panelMessage;
 	private JPanel panelChamps;
-	private JPanel panelBtnQuitter;
 	private JPanel monPanelGlobal = new JPanel();
 	
 	//Label
@@ -35,7 +34,6 @@ public class AjoutEcurie extends JFrame implements ActionListener{
 	
 	//Bouton
 	private JButton btnValider;
-	private JButton btnRetour;
 	
 	//Constructeur
 	public AjoutEcurie() {
@@ -43,20 +41,17 @@ public class AjoutEcurie extends JFrame implements ActionListener{
 	    //Instanciation des panels
 	    this.panelAjoutEcurie = new JPanel();
 	    this.panelMessage = new JPanel();
-	    this.panelBtnQuitter = new JPanel();
 	    this.panelChamps = new JPanel();
 	    monPanelGlobal.setLayout(new BorderLayout());
 
 	    //Background des panels
 	    this.panelAjoutEcurie.setBackground(Color.white);
 	    this.panelMessage.setBackground(Color.orange);
-	    this.panelBtnQuitter.setBackground(Color.white);
 	    this.panelChamps.setBackground(Color.white);
 
 	    //Disposition des panels
 	    this.panelAjoutEcurie.setLayout(new BorderLayout());
 	    this.panelMessage.setLayout(new FlowLayout());
-	    this.panelBtnQuitter.setLayout(new FlowLayout());
 	    this.panelChamps.setLayout(new FlowLayout());
 
 	    //Instanciation des messages
@@ -76,7 +71,7 @@ public class AjoutEcurie extends JFrame implements ActionListener{
 	    this.jtfNbSpectateur.setPreferredSize(new Dimension(150, 30));
 
 	    //Couleur de la police
-	    this.lblMessage.setForeground(Color.white);
+	    this.lblMessage.setForeground(Color.black);
 	    this.lblNomCourse.setForeground(Color.black);
 	    this.lblTypeCourse.setForeground(Color.black);
 	    this.lblNbSpectateur.setForeground(Color.black);
@@ -84,13 +79,10 @@ public class AjoutEcurie extends JFrame implements ActionListener{
 	    //Instanciation des boutons
 	    this.btnValider = new JButton("Valider");
 	    this.btnValider.addActionListener(this);
-	    this.btnRetour = new JButton("Retour");
-	    this.btnRetour.addActionListener(this);
 	    
 	    //Ajout des attributs aux panels
 	    this.panelAjoutEcurie.add(panelMessage, BorderLayout.PAGE_START);
 	    this.panelAjoutEcurie.add(panelChamps, BorderLayout.CENTER);
-	    this.panelAjoutEcurie.add(panelBtnQuitter, BorderLayout.PAGE_END);
 	    
 	    this.panelMessage.add(lblMessage);
 	    
@@ -102,8 +94,6 @@ public class AjoutEcurie extends JFrame implements ActionListener{
 	    this.panelChamps.add(jtfNbSpectateur);
 	    this.panelChamps.add(btnValider);
 	    this.panelChamps.add(lblInsertion);
-	
-	    this.panelBtnQuitter.add(btnRetour);
 	
 	    //Toujours à la fin
   		this.setAlwaysOnTop(true);
@@ -130,12 +120,6 @@ public class AjoutEcurie extends JFrame implements ActionListener{
             	lblInsertion.setText("ERREUR, l'ecurie n'a pas pu être ajoutée");
             }
         }
-		if(e.getSource() == btnRetour) {
-			panelAjoutEcurie.removeAll();
-			panelAjoutEcurie.add(new Accueil().getMonPanelGlobal());
-			panelAjoutEcurie.revalidate();
-			panelAjoutEcurie.repaint();
-		}
 	}
 }
 

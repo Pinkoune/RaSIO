@@ -18,7 +18,6 @@ public class SuppEcurie extends JFrame implements ActionListener{
     private JPanel panelSuppEcurie;
     private JPanel panelMessage;
     private JPanel panelChamps;
-    private JPanel panelBtnQuitter;
     private JPanel monPanelGlobal = new JPanel();
     
     //Label
@@ -31,7 +30,6 @@ public class SuppEcurie extends JFrame implements ActionListener{
       
       //Bouton
       private JButton btnValider;
-      private JButton btnRetour;
       
       public SuppEcurie() {
     
@@ -39,20 +37,17 @@ public class SuppEcurie extends JFrame implements ActionListener{
         this.panelSuppEcurie = new JPanel();
         this.panelMessage = new JPanel();
         this.panelChamps = new JPanel();
-        this.panelBtnQuitter = new JPanel();
         monPanelGlobal.setLayout(new BorderLayout());
 
         //Background des panels
         this.panelSuppEcurie.setBackground(Color.white);
         this.panelMessage.setBackground(Color.orange);
         this.panelChamps.setBackground(Color.white);
-        this.panelBtnQuitter.setBackground(Color.white);
 
         //Disposition des panels
         this.panelSuppEcurie.setLayout(new BorderLayout());
         this.panelMessage.setLayout(new FlowLayout());
         this.panelChamps.setLayout(new FlowLayout());
-        this.panelBtnQuitter.setLayout(new FlowLayout());
 
         //Instanciation des messages
         this.lblMessage = new JLabel("Ecurie - suppression");
@@ -64,18 +59,15 @@ public class SuppEcurie extends JFrame implements ActionListener{
         this.jtfSuppression.setPreferredSize(new Dimension(150, 30));
         
         //Couleur de la police
-        this.lblMessage.setForeground(Color.white);
+        this.lblMessage.setForeground(Color.black);
         
         //Instanciation des boutons
         this.btnValider = new JButton("Valider");
         this.btnValider.addActionListener(this);
-        this.btnRetour = new JButton("Retour");
-        this.btnRetour.addActionListener(this);
         
         //Ajout des attributs aux panels
         this.panelSuppEcurie.add(panelMessage, BorderLayout.PAGE_START);
         this.panelSuppEcurie.add(panelChamps, BorderLayout.CENTER);
-        this.panelSuppEcurie.add(panelBtnQuitter, BorderLayout.PAGE_END);
         
         this.panelMessage.add(lblMessage);
         
@@ -83,8 +75,6 @@ public class SuppEcurie extends JFrame implements ActionListener{
         this.panelChamps.add(jtfSuppression);
         this.panelChamps.add(btnValider);
         this.panelChamps.add(lblInsertion);
-
-        this.panelBtnQuitter.add(btnRetour);
 
         //Toujours à la fin
         this.setAlwaysOnTop(true);
@@ -109,12 +99,6 @@ public class SuppEcurie extends JFrame implements ActionListener{
                 lblInsertion.setText("Suppression non effectuée."); 
             }
         }
-        if(e.getSource() == btnRetour) {
-        	panelSuppEcurie.removeAll();
-        	panelSuppEcurie.add(new Accueil().getMonPanelGlobal());
-        	panelSuppEcurie.revalidate();
-        	panelSuppEcurie.repaint();
-		}
     }
     
 }
