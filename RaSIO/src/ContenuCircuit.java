@@ -43,6 +43,16 @@ public class ContenuCircuit {
 		this.paysCircuit = unPaysCircuit;
 	}
 	
+	public String toJSON() {
+		String rep = "";
+		rep += "\n\t{";
+        rep += "\n\t\t'nom': '" + this.nomCircuit + "',";
+        rep += "\n\t\t'taille': '" + this.tailleCircuit + "',";
+        rep += "\n\t\t'pays'; '" + this.paysCircuit + "',";
+        rep += "\n\t}";
+		return rep;
+	}
+	
 	public String toString() {
 		return this.getNomCircuit() + " - " + this.getTailleCircuit()+ " km - "  + this.getPaysCircuit();
 	}

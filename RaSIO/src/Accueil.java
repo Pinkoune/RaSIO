@@ -54,6 +54,7 @@ public class Accueil extends JPanel implements ActionListener {
     private JMenuItem btnSupprimerCircuit;
     private JMenuItem btnRechercherCircuit;
     private JMenuItem btnAffichageCircuit;
+    private JMenuItem btnAffichageCircuitJSON;
 
     private JLabel lblMessage;
 
@@ -90,18 +91,18 @@ public class Accueil extends JPanel implements ActionListener {
         this.btnSupprimerCourse = new JMenuItem("Supprimer une course");
         this.btnRechercherCourse = new JMenuItem("Rechercher une course");
         this.btnAffichageCourseXML = new JMenuItem("Afficher les courses en XML");
-        this.courses.add(btnAffichageCourse);
-        this.courses.add(btnAjouterCourse);
-        this.courses.add(btnSupprimerCourse);
-        this.courses.add(btnRechercherCourse);
-        this.courses.add(btnAffichageCourseXML);
+        this.courses.add(this.btnAffichageCourse);
+        this.courses.add(this.btnAjouterCourse);
+        this.courses.add(this.btnSupprimerCourse);
+        this.courses.add(this.btnRechercherCourse);
+        this.courses.add(this.btnAffichageCourseXML);
 
         //Creation des elements du menu ecurie
         this.btnAffichageEcurie = new JMenuItem("Afficher les ecuries");
         this.btnAjouterEcurie = new JMenuItem("Ajouter une ecurie");
         this.btnSupprimerEcurie = new JMenuItem("Supprimer une ecurie");
         this.btnRechercherEcurie = new JMenuItem("Rechercher une ecurie");
-        this.ecuries.add(btnAffichageEcurie);
+        this.ecuries.add(this.btnAffichageEcurie);
         this.ecuries.add(this.btnAjouterEcurie);
         this.ecuries.add(this.btnSupprimerEcurie);
         this.ecuries.add(this.btnRechercherEcurie);
@@ -111,10 +112,12 @@ public class Accueil extends JPanel implements ActionListener {
         this.btnAjouterCircuit = new JMenuItem("Ajouter une circuit");
         this.btnSupprimerCircuit = new JMenuItem("Supprimer une circuit");
         this.btnRechercherCircuit = new JMenuItem("Rechercher une circuit");
-        this.circuits.add(btnAffichageCircuit);
+        this.btnAffichageCircuitJSON = new JMenuItem("Afficher les circuits en JSON");
+        this.circuits.add(this.btnAffichageCircuit);
         this.circuits.add(this.btnAjouterCircuit);
         this.circuits.add(this.btnSupprimerCircuit);
         this.circuits.add(this.btnRechercherCircuit);
+        this.circuits.add(this.btnAffichageCircuitJSON);
 
         //Ecoute des items du menu course
         this.btnAjouterCourse.addActionListener(this);
@@ -134,6 +137,7 @@ public class Accueil extends JPanel implements ActionListener {
         this.btnSupprimerCircuit.addActionListener(this);
         this.btnRechercherCircuit.addActionListener(this);
         this.btnAffichageCircuit.addActionListener(this);
+        this.btnAffichageCircuitJSON.addActionListener(this);
 
         // Ajout de l'element au menu 
         jMenu.add(courses);
@@ -262,6 +266,15 @@ public class Accueil extends JPanel implements ActionListener {
             listeCircuit = Modele.affichageCircuit();
             this.framePrincipale.getContentPane().removeAll();
             this.framePrincipale.getContentPane().add(new AffCircuit(listeCircuit).getMonPanelGlobal());
+            this.framePrincipale.getContentPane().revalidate();
+            this.framePrincipale.getContentPane().repaint();
+            
+        } else if (e.getSource().equals(btnAffichageCircuitJSON)) {
+            ArrayList < ContenuCircuit > listeCircuit;
+            listeCircuit = new ArrayList < ContenuCircuit > ();
+            listeCircuit = Modele.affichageCircuit();
+            this.framePrincipale.getContentPane().removeAll();
+            this.framePrincipale.getContentPane().add(new AffCircuitJSON(listeCircuit).getMonPanelGlobal());
             this.framePrincipale.getContentPane().revalidate();
             this.framePrincipale.getContentPane().repaint();
 

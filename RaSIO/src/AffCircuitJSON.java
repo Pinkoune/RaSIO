@@ -9,7 +9,7 @@ import javax.swing. * ;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class AffCourseXML extends JPanel implements ActionListener {
+public class AffCircuitJSON extends JPanel implements ActionListener {
     
     //Attributs privés
 	
@@ -29,10 +29,10 @@ public class AffCourseXML extends JPanel implements ActionListener {
       private TextArea textListe;
 
     //Constructeur
-    public AffCourseXML(ArrayList<ContenuCourse> listeCourse) {
+    public AffCircuitJSON(ArrayList<ContenuCircuit> listeCircuit) {
     	
     	//Instanciation de la liste
-    	ArrayList<ContenuCourse> laListeCourse = Modele.affichageCourse();
+    	ArrayList<ContenuCircuit> laListeCircuit = Modele.affichageCircuit();
     	
     	//Instanciation de la frame
     	this.framePrincipale = new JFrame();
@@ -54,18 +54,18 @@ public class AffCourseXML extends JPanel implements ActionListener {
         this.panelTableau.setLayout(new FlowLayout());
         
         //Instanciation des messages
-        this.lblMessage = new JLabel("Les courses en XML");
+        this.lblMessage = new JLabel("Les circuits en JSON");
         
          //Couleur de la police
         this.lblMessage.setForeground(Color.white);
       
         //Parcours liste
         String resultat = "";
-        resultat += "<ListeCourse>";
-        for (ContenuCourse maCourse: laListeCourse) {
-        	resultat += maCourse.toXML();
+        resultat += "[";
+        for (ContenuCircuit monCircuit: laListeCircuit) {
+        	resultat += monCircuit.toJSON();
         }
-        resultat += "\n</ListeCourse>";
+        resultat += "\n]";
         
         //Ajout TextArea XML
         this.textListe = new TextArea(resultat);
