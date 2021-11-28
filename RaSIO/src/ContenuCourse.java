@@ -43,6 +43,17 @@ public class ContenuCourse {
 		this.nbSpec = unNbSpec;
 	}
 	
+	public String toXML() {
+		String rep = "";
+		rep += "\n\t<course>";
+        rep += "\n\t\t<nom> " + this.nomCourse + " </nom>";
+        rep += "\n\t\t<type> " + this.typeCourse + " </type>";
+        rep += "\n\t\t<nbSpec> " + this.nbSpec + " </nbSpec>";
+        //rep += "\n\t\t<nomCircuit> " + this.unCircuit + " </nomCircuit>";
+        rep += "\n\t</course>";
+		return rep;
+	}
+	
 	public String toString() {
 		return this.getNomCourse() + " - " + this.getTypeCourse()+ " - "  + this.getNbSpec() + " spectateurs.";
 	}
