@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : Dim 21 nov. 2021 à 15:30
+-- Généré le : Dim 28 nov. 2021 à 18:45
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -29,18 +29,20 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `circuit`;
 CREATE TABLE IF NOT EXISTS `circuit` (
+  `idCircuit` int(11) NOT NULL AUTO_INCREMENT,
   `nomCircuit` varchar(50) NOT NULL,
   `tailleCircuit` float NOT NULL,
-  `paysCircuit` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `paysCircuit` varchar(50) NOT NULL,
+  PRIMARY KEY (`idCircuit`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `circuit`
 --
 
-INSERT INTO `circuit` (`nomCircuit`, `tailleCircuit`, `paysCircuit`) VALUES
-('kek', 2581.5, 'fr'),
-('lol', 48.3, 'fr');
+INSERT INTO `circuit` (`idCircuit`, `nomCircuit`, `tailleCircuit`, `paysCircuit`) VALUES
+(1, 'kek', 2581.5, 'fr'),
+(2, 'lol', 48.3, 'fr');
 
 -- --------------------------------------------------------
 
@@ -52,15 +54,19 @@ DROP TABLE IF EXISTS `course`;
 CREATE TABLE IF NOT EXISTS `course` (
   `nomCourse` varchar(50) NOT NULL,
   `typeCourse` varchar(50) NOT NULL,
-  `nbSpectateurs` int(50) NOT NULL
+  `nbSpectateurs` int(11) NOT NULL,
+  `idCircuit` int(11) DEFAULT NULL,
+  PRIMARY KEY (`nomCourse`),
+  UNIQUE KEY `idCircuit` (`idCircuit`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `course`
 --
 
-INSERT INTO `course` (`nomCourse`, `typeCourse`, `nbSpectateurs`) VALUES
-('test', 'cestbeau', 64852);
+INSERT INTO `course` (`nomCourse`, `typeCourse`, `nbSpectateurs`, `idCircuit`) VALUES
+('france', 'rally', 45722, 1),
+('loul', 'f1', 56, 2);
 
 -- --------------------------------------------------------
 
@@ -142,7 +148,8 @@ CREATE TABLE IF NOT EXISTS `spectateur` (
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `pseudo` varchar(50) NOT NULL,
-  `mdp` varchar(50) NOT NULL
+  `mdp` varchar(150) NOT NULL,
+  PRIMARY KEY (`pseudo`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -150,8 +157,8 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`pseudo`, `mdp`) VALUES
-('admin', 'admin'),
-('jeje', '123');
+('jeje', '40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
+('admin', 'd033e22ae348aeb5660fc2140aec35850c4da997');
 
 -- --------------------------------------------------------
 

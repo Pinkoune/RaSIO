@@ -108,20 +108,22 @@ public class Modele {
         String result = "\nCette course n'existe pas.";
         int index = 0;
         String req;
-        String nom;
-        String type;
-        int nbSpec;
         //Selection
         try {
             st = connexion.createStatement();
-            req = "SELECT * FROM course";
+            req = "SELECT * FROM course, circuit WHERE course.idCircuit = circuit.idCircuit;";
             rs = st.executeQuery(req);
             // Pour accéder à chacune des lignes du résultat de la requête :
             while (rs.next()) {
-                nom = rs.getString(1);
-                type = rs.getString(2);
-                nbSpec = rs.getInt(3);
-                listeCourse.add(new ContenuCourse(nom, type, nbSpec));
+            	String nomCourse = rs.getString("nomCourse");
+                String typeCourse = rs.getString("typeCourse");
+                int nbSpec = rs.getInt("nbSpectateurs");
+                String nomCircuit = rs.getString("nomCircuit");
+                String paysCircuit = rs.getString("paysCircuit");
+                float tailleCircuit = rs.getFloat("tailleCircuit");
+                
+                ContenuCircuit ptitCircuit = new ContenuCircuit(nomCircuit, tailleCircuit, paysCircuit);
+                listeCourse.add(new ContenuCourse(nomCourse, typeCourse, nbSpec, ptitCircuit));
             }
 
             while (index < listeCourse.size() && !listeCourse.get(index).getNomCourse().equals(unNomCourse)) {
@@ -142,12 +144,17 @@ public class Modele {
         listeCourse = new ArrayList < ContenuCourse > ();
         try {
             st = connexion.createStatement();
-            rs = st.executeQuery("SELECT * FROM course");
+            rs = st.executeQuery("SELECT * FROM course, circuit WHERE course.idCircuit = circuit.idCircuit;");
             while (rs.next()) {
-                String nomCourse = rs.getString(1);
-                String typeCourse = rs.getString(2);
-                int nbSpec = rs.getInt(3);
-                listeCourse.add(new ContenuCourse(nomCourse, typeCourse, nbSpec));
+                String nomCourse = rs.getString("nomCourse");
+                String typeCourse = rs.getString("typeCourse");
+                int nbSpec = rs.getInt("nbSpectateurs");
+                String nomCircuit = rs.getString("nomCircuit");
+                String paysCircuit = rs.getString("paysCircuit");
+                float tailleCircuit = rs.getFloat("tailleCircuit");
+                
+                ContenuCircuit ptitCircuit = new ContenuCircuit(nomCircuit, tailleCircuit, paysCircuit);
+                listeCourse.add(new ContenuCourse(nomCourse, typeCourse, nbSpec, ptitCircuit));
             }
         } catch (Exception e) {
             System.out.println("Erreur dans l'affichage de la course.");
@@ -347,9 +354,9 @@ public class Modele {
             st = connexion.createStatement();
             rs = st.executeQuery("SELECT * FROM circuit");
             while (rs.next()) {
-                String nomCircuit = rs.getString(1);
-                float tailleCircuit = rs.getFloat(2);
-                String paysCircuit = rs.getString(3);
+                String nomCircuit = rs.getString("nomCircuit");
+                float tailleCircuit = rs.getFloat("tailleCircuit");
+                String paysCircuit = rs.getString("paysCircuit");
                 listeCircuit.add(new ContenuCircuit(nomCircuit, tailleCircuit, paysCircuit));
             }
         } catch (Exception e) {

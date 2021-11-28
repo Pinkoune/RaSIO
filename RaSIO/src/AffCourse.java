@@ -66,12 +66,14 @@ public class AffCourse extends JPanel implements ActionListener {
             data[i][0] = maCourse.getNomCourse();
             data[i][1] = maCourse.getTypeCourse();
             data[i][2] = maCourse.getNbSpec();
+            data[i][3] = maCourse.getUnCircuit().getNomCircuit();
             i++;
         }
         String[] title = {
             "Nom de la course",
             "Type du circuit",
             "Nombre de spectateurs",
+            "Nom du circuit",
         };
         this.tableau = new JTable(data, title);
         this.tableau.setPreferredScrollableViewportSize(new Dimension(350, 300));

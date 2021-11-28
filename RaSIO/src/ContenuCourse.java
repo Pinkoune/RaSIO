@@ -9,9 +9,17 @@ public class ContenuCourse {
 	private String nomCourse;
 	private String typeCourse;
 	private int nbSpec;
+	private ContenuCircuit unCircuit;
 
 	
 	//Constructeur
+	public ContenuCourse(String unNomCourse, String unTypeCourse, int unNbSpec, ContenuCircuit leCircuit) {
+		this.nomCourse = unNomCourse;
+		this.typeCourse = unTypeCourse;
+		this.nbSpec = unNbSpec;
+		this.unCircuit = leCircuit;
+	}
+	
 	public ContenuCourse(String unNomCourse, String unTypeCourse, int unNbSpec) {
 		this.nomCourse = unNomCourse;
 		this.typeCourse = unTypeCourse;
@@ -43,6 +51,14 @@ public class ContenuCourse {
 		this.nbSpec = unNbSpec;
 	}
 	
+	public ContenuCircuit getUnCircuit() {
+		return unCircuit;
+	}
+
+	public void setUnCircuit(ContenuCircuit unCircuit) {
+		this.unCircuit = unCircuit;
+	}
+	
 	public String toXML() {
 		String rep = "";
 		rep += "\n\t<course>";
@@ -53,7 +69,7 @@ public class ContenuCourse {
         rep += "\n\t</course>";
 		return rep;
 	}
-	
+
 	public String toString() {
 		return this.getNomCourse() + " - " + this.getTypeCourse()+ " - "  + this.getNbSpec() + " spectateurs.";
 	}
